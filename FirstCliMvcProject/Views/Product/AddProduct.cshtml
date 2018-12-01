@@ -1,0 +1,49 @@
+﻿@model FirstCliMvcProject.Models.ProductViewModel;
+
+@{
+    ViewData["Title"] = "UrunEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Yeni Ürün Ekleme</h2>
+<form asp-controller="Product" asp-action="AddProduct"  method="post">
+    
+    <table>
+        <tr>
+            <th>Ürün Adı</th>
+            <th> <input asp-for="product.productName" /></th>
+
+        </tr>
+        <tr>
+            <th>Ürün Fiyatı</th>
+            <th> <input asp-for="product.price" /></th>
+
+        </tr>
+        <tr>
+            <th>Ürün Stok</th>
+            <th> <input asp-for="product.Stok" /></th>
+
+        </tr>
+        <tr>
+            <th>Resim</th>
+            <th> <input type="file" name="files" multiple /> </th>
+
+        </tr>
+        <tr>
+            <th>Marka</th>
+            <th>
+                <select asp-for="product.marka" asp-items="@Model.brands">
+                    <option>Please select one</option>
+                </select>
+            </th>
+</tr>
+
+    </table>    
+
+    <input type="submit" name="Create"/>
+ 
+   
+    
+
+</form>
+
