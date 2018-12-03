@@ -52,7 +52,7 @@ namespace FirstCliMvcProject
             app.UseMvc(routes =>
             {
                 routes.MapRoute("product", "Urunler/Urun-ekle",
-                 defaults: new { controller = "Product", action = "AddProduct" });
+                 defaults: new { controller = "product", action = "Addproduct" });
 
                 routes.MapRoute(
                     name: "default",

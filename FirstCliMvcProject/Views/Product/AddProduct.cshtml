@@ -1,49 +1,55 @@
-﻿@model FirstCliMvcProject.Models.ProductViewModel;
+﻿@model FirstCliMvcProject.Models.productViewModel
 
 @{
-    ViewData["Title"] = "UrunEkle";
+    ViewData["Title"] = "Addproduct";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Yeni Ürün Ekleme</h2>
-<form asp-controller="Product" asp-action="AddProduct"  method="post">
-    
-    <table>
-        <tr>
-            <th>Ürün Adı</th>
-            <th> <input asp-for="product.productName" /></th>
+<h2>Addproduct</h2>
 
-        </tr>
-        <tr>
-            <th>Ürün Fiyatı</th>
-            <th> <input asp-for="product.price" /></th>
+<h4>productViewModel</h4>
+<hr />
+<<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddProduct" asp-controller="product" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="form-group">
+                <label asp-for="product.productName" class="control-label"></label>
+                <input asp-for="product.productName" class="form-control" />
+                <span asp-validation-for="product.productName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="product.Stok" class="control-label"></label>
+                <input asp-for="product.Stok" class="form-control" />
+                <span asp-validation-for="product.Stok" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="product.price" class="control-label"></label>
+                <input asp-for="product.price" class="form-control" />
+                <span asp-validation-for="product.price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
 
-        </tr>
-        <tr>
-            <th>Ürün Stok</th>
-            <th> <input asp-for="product.Stok" /></th>
+                <label asp-for="brands" class="control-label"></label>
+                <select asp-for="brands" asp-items="Model.brands" class="form-control"></select>
+                <span asp-validation-for="brands" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="File" class="control-label"></label>
+                <input type="file" asp-for="File" class="form-control" />
+                <span asp-validation-for="File" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
 
-        </tr>
-        <tr>
-            <th>Resim</th>
-            <th> <input type="file" name="files" multiple /> </th>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
-        </tr>
-        <tr>
-            <th>Marka</th>
-            <th>
-                <select asp-for="product.marka" asp-items="@Model.brands">
-                    <option>Please select one</option>
-                </select>
-            </th>
-</tr>
-
-    </table>    
-
-    <input type="submit" name="Create"/>
- 
-   
-    
-
-</form>
 
